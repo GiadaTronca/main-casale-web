@@ -100,3 +100,31 @@
   setPadding();
   update();
 })();
+
+// Video delle sezioni: si caricano solo quando stanno per entrare nello schermo,
+// partono da soli senza audio e si fermano quando escono. Con "riduci movimento" resta la foto.
+(function () {
+  var videos = [].slice.call(document.querySelectorAll('video.lazy-video'));
+  if (!videos.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+
+  function load(v) {
+    if (v.dataset.loaded) return;
+    v.src = v.dataset.src;
+    v.dataset.loaded = '1';
+  }
+  function play(v) {
+    load(v);
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+
+  if (!('IntersectionObserver' in window)) { videos.forEach(play); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) play(e.target); else if (e.target.dataset.loaded) e.target.pause();
+    });
+  }, { rootMargin: '200px 0px' });
+  videos.forEach(function (v) { io.observe(v); });
+})();

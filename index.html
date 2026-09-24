@@ -11,6 +11,9 @@
   <meta property="og:image" content="immagini/template/hero.jpg">
   <link rel="preload" href="fonts/lora-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Icone dei social: Font Awesome Free (brands) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="css/stile.css">
 </head>
 <body>
@@ -25,7 +28,7 @@
       <a class="logo" href="#top" aria-label="Il Casale delle Erbe, torna all'inizio">
         <img src="immagini/logo-header.png" alt="Il Casale delle Erbe · Vicenza" width="347" height="109">
       </a>
-      <nav class="nav" aria-label="Sezioni della pagina">
+      <nav class="nav" id="menu" aria-label="Sezioni della pagina">
         <a href="#erbario">Erbario</a>
         <a href="#eventi">Eventi</a>
         <a href="#chi-siamo">Chi siamo</a>
@@ -33,6 +36,7 @@
         <a href="#contatti">Contatti</a>
       </nav>
       <a class="btn btn-sm" href="https://maps.google.com/?q=Via+Cafarette+6+Bolzano+Vicentino" target="_blank" rel="noopener">Come arrivare</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu"><span></span><span></span><span></span></button>
     </div>
   </header>
 
@@ -82,10 +86,9 @@
           <div class="collage" aria-hidden="true">
             <img class="c-big" src="immagini/template/collage-garofani.jpg" alt="" width="1328" height="864" loading="lazy">
             <div class="c-square">
-              <img src="immagini/template/collage-ritratto.jpg" alt="" width="270" height="270" loading="lazy">
-              <img src="immagini/template/collage-bottega.jpg" alt="" width="900" height="600" loading="lazy">
+              <img src="immagini/casale/come-lavoriamo-2.jpg" alt="" width="700" height="851" loading="lazy">
             </div>
-            <img class="c-tall" src="immagini/template/collage-rose.jpg" alt="" width="620" height="1102" loading="lazy">
+            <img class="c-tall" src="immagini/casale/come-lavoriamo-1.jpg" alt="" width="700" height="919" loading="lazy">
           </div>
           <div class="card process-card">
             <h3 class="title">Come lavoriamo</h3>
@@ -113,17 +116,17 @@
           <p>Calendula officinalis</p>
         </article>
         <article class="herb">
-          <img src="immagini/template/prodotto-2.jpg" alt="" width="600" height="898" loading="lazy">
+          <img class="h-lavanda" src="immagini/casale/lavanda.jpg" alt="" width="800" height="1067" loading="lazy">
           <h3>Lavanda</h3>
           <p>Lavandula angustifolia</p>
         </article>
         <article class="herb">
-          <img src="immagini/template/prodotto-3.jpg" alt="" width="600" height="800" loading="lazy">
+          <video class="lazy-video" muted loop playsinline preload="none" poster="immagini/casale/iperico-video.jpg" data-src="immagini/casale/iperico.mp4" width="478" height="850" aria-hidden="true"></video>
           <h3>Iperico</h3>
           <p>Hypericum perforatum</p>
         </article>
         <article class="herb">
-          <img src="immagini/template/prodotto-4.jpg" alt="" width="1079" height="800" loading="lazy">
+          <img class="h-monarda" src="immagini/casale/monarda.jpg" alt="" width="800" height="1067" loading="lazy">
           <h3>Monarda</h3>
           <p>Monarda didyma</p>
         </article>
@@ -154,19 +157,19 @@
         </button>
         <div class="events-track" data-track tabindex="0" role="region" aria-label="Eventi in campagna">
           <article class="event">
-            <img class="ev1" src="immagini/template/evento-1.jpg" alt="" width="700" height="875" loading="lazy">
+            <img class="ev1" src="immagini/casale/san-giovanni.jpg" alt="" width="900" height="1200" loading="lazy">
             <h3>La notte di San Giovanni</h3>
             <p class="when">✦ 24 giugno</p>
             <p class="body muted">La sera prima si raccolgono le erbe e si mettono in acqua sotto le stelle. La mattina dopo ci si lava con la rugiada. Si sta insieme, si spiega cosa va nel mazzo e perché.</p>
           </article>
           <article class="event">
-            <img class="ev2" src="immagini/template/evento-2.jpg" alt="" width="700" height="875" loading="lazy">
+            <img class="ev2" src="immagini/casale/raccolta-fiori.jpg" alt="" width="900" height="1200" loading="lazy">
             <h3>Raccolta fiori nel campo</h3>
             <p class="when">✦ Luglio – Settembre</p>
             <p class="body muted">Si entra tra i filari con le forbici e il secchio e ci si fa il mazzo da sé: dalie, zinnie, girasoli, ammi. Si paga a stelo.</p>
           </article>
           <article class="event">
-            <img class="ev3" src="immagini/template/evento-3.jpg" alt="" width="700" height="1050" loading="lazy">
+            <img class="ev3" src="immagini/casale/serate.jpg" alt="" width="900" height="1200" loading="lazy">
             <h3>Serate in mezzo alle erbe</h3>
             <p class="when">✦ Estate</p>
             <p class="body muted">Cena semplice all'aperto, giro nei campi al tramonto e assaggio di tisane fredde. Posti pochi, si prenota.</p>
@@ -188,15 +191,20 @@
     <section class="about">
       <div class="in">
         <div class="block block-a" id="chi-siamo">
-          <img class="block-img" src="immagini/template/blocco-1.jpg" alt="" width="987" height="1480" loading="lazy">
+          <img class="block-img b-chi" src="immagini/casale/chi-siamo.jpg" alt="Sotto il portico del Casale, tra le cassette di verdura del giorno" width="940" height="1406" loading="lazy">
           <div class="card block-card">
             <h2 class="title">Chi siamo</h2>
-            <p class="body muted card-text">Massimo e Maria hanno tenuto le api per più di vent'anni. Nel 2006 sono diventata erborista e li ho convinti a provare una cosa nuova: convertire tutto al biologico e cominciare a seminare officinali. Da lì sono arrivate le tisane, poi la bottega, poi l'orto e il campo dei fiori.<br>Emanuela, la nostra erborista</p>
+            <figure class="quote card-text">
+              <blockquote class="body muted">
+                <p>Massimo e Maria hanno tenuto le api per più di vent’anni. Nel 2006 sono diventata erborista e li ho convinti a provare una cosa nuova: convertire tutto al biologico e cominciare a seminare officinali. Da lì sono arrivate le tisane, poi la bottega, poi l’orto e il campo dei fiori.</p>
+              </blockquote>
+              <figcaption class="signature">—&nbsp;Emanuela, la nostra erborista</figcaption>
+            </figure>
             <a class="text-link" href="#contatti">Restiamo in contatto</a>
           </div>
         </div>
         <div class="block block-b" id="bottega">
-          <img class="block-img" src="immagini/template/blocco-2.jpg" alt="" width="987" height="1483" loading="lazy">
+          <video class="block-img lazy-video" muted loop playsinline preload="none" poster="immagini/casale/bottega-video.jpg" data-src="immagini/casale/bottega.mp4" width="474" height="850" aria-hidden="true"></video>
           <div class="card block-card">
             <h2 class="title">La bottega è aperta</h2>
             <p class="body muted card-text">Tisane ed erbe sfuse, miele, conserve, farine, frutta e verdura del giorno, fiori in stagione. Si entra anche solo per il profumo, non ci offendiamo.<br>Lunedì 15:30 – 19:00. Mar – Sab 9:00 – 12:00 / 15:30 – 19:00. Domenica chiuso.<br>Via Cafarette 6, 36050 Bolzano Vicentino (VI)</p>
@@ -238,13 +246,13 @@
   <footer class="footer">
     <div class="in footer-in">
       <img class="footer-logo" src="immagini/logo-footer.png" alt="Il Casale delle Erbe · Vicenza" width="270" height="269" loading="lazy">
-      <p class="f-left">
-        <a href="https://www.instagram.com/il_casale_delle_erbe?igsh=MWRzN3Jrdnd3cTEyMQ==" target="_blank" rel="noopener">Instagram</a> ·
-        <a href="https://www.facebook.com/share/1LKJMPRrNQ/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a> ·
-        <a href="https://wa.me/393338669781" target="_blank" rel="noopener">WhatsApp</a>
-      </p>
-      <p class="f-center">© Il Casale delle Erbe di Fattori Emanuela</p>
-      <p class="f-right">Azienda agricola biologica</p>
+      <ul class="social" aria-label="Seguici sui social">
+        <li><a href="https://www.instagram.com/il_casale_delle_erbe?igsh=MWRzN3Jrdnd3cTEyMQ==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.facebook.com/share/1LKJMPRrNQ/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a href="https://wa.me/393338669781" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></li>
+      </ul>
+      <p class="footer-note">© Il Casale delle Erbe di Fattori Emanuela</p>
+      <p class="footer-note">Azienda agricola biologica</p>
     </div>
   </footer>
 
