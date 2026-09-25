@@ -42,6 +42,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 img, video { display: block; }
+h1, h2, h3 { text-wrap: balance; }
+p, li, figcaption { text-wrap: pretty; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 ul { list-style: none; }
@@ -176,7 +178,8 @@ ul { list-style: none; }
 .banner-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
 .banner-in { height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; padding-bottom: calc(36 * var(--u)); }
 .banner h2 { font-size: calc(28 * var(--u)); line-height: calc(43 * var(--u)); max-width: calc(299 * var(--u)); }
-.banner .btn { margin-top: calc(12 * var(--u)); }
+.banner .banner-text { margin-top: calc(8 * var(--u)); max-width: calc(290 * var(--u)); color: var(--ink); }
+.banner .btn { margin-top: calc(14 * var(--u)); }
 
 /* ---------- Section 11-12 · eventi ---------- */
 .events-section { margin-top: calc(60 * var(--u)); }
@@ -189,6 +192,7 @@ ul { list-style: none; }
 .event .ev1 { object-position: 50% 50%; }
 .event .ev2 { object-position: 50% 35%; }
 .event .ev3 { object-position: 50% 45%; }
+.event .ev4 { object-position: 50% 55%; }
 .event h3 { margin-top: calc(10 * var(--u)); font-weight: 400; font-size: clamp(17px, calc(20 * var(--u)), 20px); line-height: max(1.3em, calc(26 * var(--u))); letter-spacing: .0075em; color: var(--black); }
 .event .when { margin-top: calc(10 * var(--u)); font-size: clamp(14px, calc(16 * var(--u)), 16px); line-height: max(1.625em, calc(26 * var(--u))); letter-spacing: .0094em; color: var(--black); }
 .event .body { margin-top: calc(10 * var(--u)); max-width: calc(299 * var(--u)); }
@@ -203,9 +207,15 @@ ul { list-style: none; }
 .block + .block { margin-top: calc(50 * var(--u)); }
 .block-img { position: relative; z-index: 2; width: calc(300 * var(--u)); height: calc(230 * var(--u)); object-fit: cover; margin-left: calc(10 * var(--u)); background: var(--beige); }
 .block-img.b-chi { object-position: 50% 29%; }
+.block-img.b-cosa { object-position: 50% 26%; }
 .block-card { position: relative; z-index: 1; margin-top: calc(-48 * var(--u)); padding: calc(89 * var(--u)) calc(10 * var(--u)) calc(39 * var(--u)); }
 .block-card .title { font-size: calc(28 * var(--u)); line-height: calc(40 * var(--u)); }
 .block-card .card-text { margin-top: calc(12 * var(--u)); max-width: calc(300 * var(--u)); }
+.block-card .hours { margin-top: calc(12 * var(--u)); max-width: calc(300 * var(--u)); }
+.block-card .hours a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.block-card .card-text + .card-text { margin-top: calc(12 * var(--u)); }
+.topbar .tb-extra { display: none; }
+.events-lead { margin-top: calc(10 * var(--u)); text-align: center; padding-inline: calc(10 * var(--u)); }
 /* citazione di Emanuela: testo in corsivo, firma in Lora con trattino */
 .quote blockquote { font-style: italic; }
 .signature { margin-top: calc(14 * var(--u)); font-family: "Lora", Georgia, "Times New Roman", serif; font-weight: 400; font-size: clamp(15px, calc(17 * var(--u)), 17px); line-height: 1.45; letter-spacing: .01em; color: var(--ink); }
@@ -283,6 +293,7 @@ ul { list-style: none; }
 
   .banner { margin-top: calc(70 * var(--u)); height: calc(562 * var(--u)); }
   .banner h2 { font-size: calc(32 * var(--u)); line-height: calc(49 * var(--u)); max-width: calc(415 * var(--u)); }
+  .banner .banner-text { margin-top: calc(10 * var(--u)); max-width: calc(440 * var(--u)); }
   .banner .btn { margin-top: calc(18 * var(--u)); }
 
   .events-section { margin-top: calc(70 * var(--u)); }
@@ -299,6 +310,10 @@ ul { list-style: none; }
   .block-card { margin-top: calc(-136 * var(--u)); padding: calc(162 * var(--u)) calc(22 * var(--u)) calc(38 * var(--u)); }
   .block-card .card-text { margin-top: calc(35 * var(--u)); max-width: calc(488 * var(--u)); }
   .signature { margin-top: calc(18 * var(--u)); font-size: clamp(15px, calc(18 * var(--u)), 18px); }
+  .block-card .hours { margin-top: calc(14 * var(--u)); max-width: calc(488 * var(--u)); }
+  .block-card .card-text + .card-text { margin-top: calc(14 * var(--u)); }
+  .topbar .tb-extra { display: inline; }
+  .events-lead { margin-top: calc(12 * var(--u)); padding-inline: calc(60 * var(--u)); }
   .block-card .text-link { margin-top: calc(47 * var(--u)); }
 
   .contact-in { padding-top: calc(182.5 * var(--u)); }
@@ -361,9 +376,11 @@ ul { list-style: none; }
   .banner-bg { object-position: 50% 80.5%; }
   .banner-in { padding-bottom: calc(48 * var(--u)); }
   .banner h2 { font-size: calc(48 * var(--u)); line-height: calc(57 * var(--u)); max-width: calc(681 * var(--u)); }
-  .banner .btn { margin-top: calc(30 * var(--u)); }
+  .banner .banner-text { margin-top: calc(14 * var(--u)); max-width: calc(560 * var(--u)); }
+  .banner .btn { margin-top: calc(26 * var(--u)); }
 
   .events-title { font-size: calc(34 * var(--u)); padding-inline: calc(200 * var(--u)); }
+  .events-lead { padding-inline: calc(330 * var(--u)); }
   .events { margin-top: calc(60 * var(--u)); display: flex; align-items: flex-start; gap: calc(30 * var(--u)); padding-left: calc(80 * var(--u)); }
   .arrow { position: static; flex: 0 0 auto; margin-top: calc(243 * var(--u)); }
   .events-track { flex: 0 0 auto; width: calc(1018 * var(--u)); gap: calc(23 * var(--u)); }
@@ -434,6 +451,7 @@ ul { list-style: none; }
   .header.is-open .nav a:nth-child(3) { animation-delay: .08s; }
   .header.is-open .nav a:nth-child(4) { animation-delay: .12s; }
   .header.is-open .nav a:nth-child(5) { animation-delay: .16s; }
+  .header.is-open .nav a:nth-child(6) { animation-delay: .2s; }
 }
 
 /* entrata dell'header al caricamento della pagina */
@@ -449,6 +467,7 @@ ul { list-style: none; }
   .nav a:nth-child(3) { animation-delay: .14s; }
   .nav a:nth-child(4) { animation-delay: .18s; }
   .nav a:nth-child(5) { animation-delay: .22s; }
+  .nav a:nth-child(6) { animation-delay: .26s; }
 }
 
 @media (prefers-reduced-motion: reduce) {
